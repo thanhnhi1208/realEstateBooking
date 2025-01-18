@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xác Nhận Đặt Lịch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Xác Nhận Đặt Lịch</h2>
+        <div class="appointment-info">
+			<h1 th:if="${lichHen.chapNhan==true}">Quản trị viên đã xác nhận lịch, vui lòng đi đúng giờ !</h1>
+			<h1 th:if="${lichHen.huyHen==true}">Quản trị viên đã từ chối đặt lịch !</h1>
+
+            <p><strong>Họ và tên:</strong> <span th:text="${lichHen.hoVaTen}">Nguyễn Văn A</span></p>
+            <p><strong>Số điện thoại:</strong> <span  th:text="${lichHen.soDienThoai}"></span></p>
+            <p><strong>Tên bất động sản:</strong> <span  th:text="${lichHen.bds.tenBDS}"></span></p>
+            <p><strong>Ngày giờ hẹn:</strong> <span  th:text="${lichHen.ngayGioHen}"></span></p>
+            <p th:if="${lichHen.nhanVien != null}"><strong>Nhân viên:</strong> <span  th:text="${lichHen.nhanVien.hoVaTen}"></span></p>
+        </div>
+        
+        <form class="confirmation-form" th:if="${lichHen.nhanVien == null and lichHen.huyHen==false}" th:action="@{'http://localhost:8080/lichHen/themLichHen'}">
+			<input type="hidden" name="ngayGioHen" id="ngayGioHen" th:value="${lichHen.ngayGioHen}">
+			<input type="hidden" name="emailHen" id="emailHen" th:value="${lichHen.emailHen}">
+			<input type="hidden" name="hoVaTen"  id="hoVaTen"th:value="${lichHen.hoVaTen}">
+			<input type="hidden" name="soDienThoai" id="soDienThoai" th:value="${lichHen.soDienThoai}">
+			<input type="hidden" name="bdsId" id="bdsId" th:value="${lichHen.bds.bdsId}">
+			<input type="hidden" name="nguoiDungId" id="nguoiDungId" th:value="${lichHen.nguoiDung.nguoiDungId}">
+			
+            <h3>Vui lòng xác nhận cuộc hẹn</h3>
+            <button type="submit" class="confirm-btn">Xác Nhận</button>
+        </form>
+    </div>
+   
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhắc nhở lịch hẹn</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="appointment-info">
+			<h1 >Nhắc nhở lịch hẹn!</h1>
+
+            <p><strong>Họ và tên:</strong> <span th:text="${hoVaTen}">Nguyễn Văn A</span></p>
+            <p><strong>Số điện thoại:</strong> <span  th:text="${soDienThoai}"></span></p>
+            <p><strong>Tên bất động sản:</strong> <span  th:text="${tenBDS}"></span></p>
+            <p><strong>Ngày giờ hẹn:</strong> <span  th:text="${ngayGioHen}"></span></p>
+            <p ><strong>Nhân viên:</strong> <span  th:text="${tenNhanVien}"></span></p>
+        </div>
+    </div>
+   
+</body>
+</html>
